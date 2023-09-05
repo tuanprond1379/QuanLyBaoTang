@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "BaitapThucHanh";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+
+@section js{
+    <script src="~/Controllers/js/baitapthuchanh.js"></script>
+    
+}
+<div class="col-sm-12">
+    <div class="card">
+
+        <div class="card-header text-center">
+            <h5>Quan Ly Hien Vat</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive" >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ho</th>
+                                        <th>ten</th>
+                                        <th>sdt</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="DanhSach">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div>
+                        <button class="btn btn-info btn-sm" id="btnThem" >thêm</button>
+                        <button class="btn btn-primary btn-sm" id="btnTao">tạo mới</button>
+                        <button class="btn btn-danger btn-sm" id="btnXoa">xóa table</button>
+                    </div>
+                    <div>
+                        <label>Ho</label>
+                        <input type="text" class="form-control" id="txtHo" placeholder="nhap ho" />
+                    </div>
+                    <div>
+                        <label>ten</label>
+                        <input type="text" class="form-control" id="txtTen" placeholder="nhap ten" />
+                    </div>
+                    <div>
+                        <label>sdt</label>
+                        <input type="number" class="form-control" id="txtSDT" placeholder="nhap SDT" />
+                    </div>
+
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+
+

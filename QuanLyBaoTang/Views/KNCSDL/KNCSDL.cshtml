@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "KNCSDL";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+@section Js{
+    <script>
+        myController = {
+            init: function () {
+                myController.RegesterEvent();
+            },
+            RegesterEvent: function () {
+                $("#btnLoadDuLieu").off('click').on('click', function () {
+                    myController.LoadData();
+                });
+
+                $("#btnXoa").off('click').on('click', function () {
+                    $("#tbl_NhanVien").bootstrapTable('removeAll');
+                });
+                $("#btnSearch").off('click').on('click', function () {
+                    myController.LoadData();
+                });
+                $("#btnThem").off('click').on('click', function () {
+                    myController.SaveData();
+                });
+                
+            },
+
+            LoadData: function () {
+                var txtsearchHoTen = $("#txtsearchHoTen").val();
+
+                $.ajax({
+                    type: 'get',
+                    datatype: 'json',
+                    data: {
+                        txtsearchHoTen: txtsearchHoTen,
+                    },
+                    url: '/KNCSDL/LoadData',
+                    success: function (response) {
+                        if (response.status == true) {
+                            var lstData = response.lstData;
+                            if (lstData != null) {
+                                $("#tbl_NhanVien").bootstrapTable('load', lstData);
+                            } else {
+                                $("#tbl_NhanVien").bootstrapTable('removeAll');
+                            }
+
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            },
+            SaveData: function () {
+                var ho_ten = $("#ho_ten").val();
+                var gioi_tinh = $("#gioi_tinh").val();
+                var ngay_sinh = $("#ngay_sinh").val();
+                var luong = $("#luong").val();
+                var isTrangThai = $("#isTrangThai").prop('checked');
+                $.ajax({
+                    type: 'post',
+                    datatype: 'json',
+                    data: {
+                        ho_ten: ho_ten,
+                        gioi_tinh: gioi_tinh,
+                        ngay_sinh: ngay_sinh,
+                        luong: luong,
+                        isTrangThai: isTrangThai,
+                    },
+                    url: '/KNCSDL/SaveData',
+                    success: function (response) {
+                        if (response.status == true) {
+                            alert("thêm thành công");
+                            myController.LoadData();
+                        }
+
+                    },
+
+                });
+          
+            },
+
+        };
+        myController.init();
+
+    </script>
+}
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Quản lý học sinh</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="table-responsive">
+                        @*data table*@
+                        <table id="tbl_NhanVien"
+                               data-toggle="table"
+                               data-classes="table table-bordered table-hover reponsive"
+                               data-mobile-responsive="true"
+                               data-search="true"
+                               data-fixed-columns="true"
+                               data-show-export="true"
+                               data-pagination="true"
+                               data-page-size="15"
+                               data-page-list="[15, 25, 35, all]">
+                            <thead class="">
+                                <tr class="trTable">
+                                    <th data-field="idNhanVien" data-sortable="true">ID Nhân Viên</th>
+                                    <th data-field="ho_ten" data-sortable="true">Họ tên</th>
+                                    <th data-field="gio_tinh" data-sortable="true">Giới tính</th>
+                                    <th data-field="ngay_sinh" data-sortable="true">Ngày sinh</th>
+                                    <th data-field="luong" data-sortable="true">Lương</th>
+                                    <th data-field="trang_thai" data-sortable="true">Trạng Thái</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="col-lg-12 m-b-10">
+                        <button class="btn btn-warning btn-sm" id="btnLoadDuLieu">Load Dữ liệu</button>
+                        <button class="btn btn-warning btn-sm" id="btnSearch">Search</button>
+                        <button class="btn btn-primary btn-sm" id="btnThem">Thêm</button>
+                        <button class="btn btn-info btn-sm" id="btnCapNhap">Cập nhập</button>
+                        <button class="btn btn-danger btn-sm" id="btnXoa">Xóa</button>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <input class="form-control" id="txtsearchHoTen" placeholder="Search họ tên" type="type" name="name" value="" />
+                    </div>
+                    <div class="col-lg-12">
+
+                        <div class="col-lg-12">
+                            <label>Họ tên</label>
+                            <input type="text" id="ho_ten" class="form-control" />
+                        </div>
+
+                        <div class="col-lg-12">
+                            <label>Giới tính</label>
+                            <select id="gioi_tinh" class="form-control">
+                                <option value="">-- Chọn giới tính --</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <label>Ngày sinh</label>
+                            <input type="date" id="ngay_sinh" class="form-control" />
+                        </div>
+
+                        <div class="col-lg-12">
+                            <label>Lương</label>
+                            <input type="number" id="luong" class="form-control" />
+                        </div>
+                        <div class="col-lg-12">
+                            <label>Trạng Thái</label>
+                            <input type="checkbox" id="isTrangThai" class="custom-control" style="width:50px" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

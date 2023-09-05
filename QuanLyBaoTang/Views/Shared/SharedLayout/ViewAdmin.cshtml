@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+@section Js{
+    <script src="~/Controllers/js/DangNhap.js"></script>
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ablepro v8.0 bootstrap admin template by Phoenixcoded</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+
+    @Styles.Render("~/diamond/css")
+    <link href="~/Assets/SP/Select2/select2.min.css" rel="stylesheet" />
+    <link href="~/Assets/SP/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/Assets/SP/ThongBao/jquery.toast.css" rel="stylesheet" />
+    <link href="~/Assets/SP/sweet alert/sweetalert.css" rel="stylesheet" />
+    <link href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" rel="stylesheet">
+
+</head>
+<body class="">
+
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    @*//bat dau cua Menu*@
+    @Html.Partial("~/Views/Shared/SharedLayout/ViewMenu.cshtml")
+
+    @*//header*@
+    @Html.Partial("~/Views/Shared/SharedLayout/ViewHeader.cshtml")
+
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/diamond/js")
+    <script src="~/Assets/SP/ThongBao/jquery.toast.js"></script>
+    <script src="~/Assets/SP/js/toastr.min.js"></script>
+    <script src="~/Assets/SP/Select2/select2.full.min.js"></script>
+    <script src="~/Assets/SP/bootbox/bootbox.min.js"></script>
+    <script src="~/Assets/SP/sweet alert/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    @RenderSection("js", required: false)
+</body>
+
+</html>

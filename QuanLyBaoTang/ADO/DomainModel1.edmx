@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DomainSuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblNhan_Vien">
+          <Key>
+            <PropertyRef Name="idNhanVien" />
+          </Key>
+          <Property Name="idNhanVien" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ho_ten" Type="nvarchar" MaxLength="250" />
+          <Property Name="gioi_tinh" Type="nvarchar" MaxLength="250" />
+          <Property Name="ngay_sinh" Type="datetime" />
+          <Property Name="luong" Type="money" />
+          <Property Name="isTrangThai" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblPhongBan">
+          <Key>
+            <PropertyRef Name="IdPhongBan" />
+          </Key>
+          <Property Name="IdPhongBan" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenPhongBan" Type="nvarchar" MaxLength="250" />
+          <Property Name="SoluongNhanvien" Type="bigint" />
+          <Property Name="ngayTaoPhong" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="DomainSuModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNhan_Vien" EntityType="Self.tblNhan_Vien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPhongBan" EntityType="Self.tblPhongBan" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DomainSuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="XEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="DomainSuModel.sysdiagram" />
+          <EntitySet Name="tblNhan_Vien" EntityType="DomainSuModel.tblNhan_Vien" />
+          <EntitySet Name="tblPhongBans" EntityType="DomainSuModel.tblPhongBan" />
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblNhan_Vien">
+          <Key>
+            <PropertyRef Name="idNhanVien" />
+          </Key>
+          <Property Name="idNhanVien" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ho_ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="gioi_tinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ngay_sinh" Type="DateTime" Precision="3" />
+          <Property Name="luong" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="isTrangThai" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblPhongBan">
+          <Key>
+            <PropertyRef Name="IdPhongBan" />
+          </Key>
+          <Property Name="IdPhongBan" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenPhongBan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SoluongNhanvien" Type="Int64" />
+          <Property Name="ngayTaoPhong" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DomainSuModelStoreContainer" CdmEntityContainer="XEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DomainSuModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNhan_Vien">
+            <EntityTypeMapping TypeName="DomainSuModel.tblNhan_Vien">
+              <MappingFragment StoreEntitySet="tblNhan_Vien">
+                <ScalarProperty Name="isTrangThai" ColumnName="isTrangThai" />
+                <ScalarProperty Name="luong" ColumnName="luong" />
+                <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+                <ScalarProperty Name="gioi_tinh" ColumnName="gioi_tinh" />
+                <ScalarProperty Name="ho_ten" ColumnName="ho_ten" />
+                <ScalarProperty Name="idNhanVien" ColumnName="idNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPhongBans">
+            <EntityTypeMapping TypeName="DomainSuModel.tblPhongBan">
+              <MappingFragment StoreEntitySet="tblPhongBan">
+                <ScalarProperty Name="ngayTaoPhong" ColumnName="ngayTaoPhong" />
+                <ScalarProperty Name="SoluongNhanvien" ColumnName="SoluongNhanvien" />
+                <ScalarProperty Name="tenPhongBan" ColumnName="tenPhongBan" />
+                <ScalarProperty Name="IdPhongBan" ColumnName="IdPhongBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "HocJquery";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+@section Js{
+    <script src="~/Controllers/js/HocJquery.js"></script>
+   
+    }
+<div class="col-sm-12">
+    <div class="card">
+
+        <div class="card-header text-center">
+            <h5>Quan Ly Hien Vat</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @*<div class="col-lg-12 p-40">
+                    <p>C#</p>
+                    <p>js</p>
+                    <p>Ruby</p>
+
+
+                    <button class="btn btn-success" id="btn-an" >ẩn thẻ</button>
+                    <button class="btn btn-info" id="btn-hien">hien the</button>
+                </div>*@
+                <div class="col-lg-12 p-40">
+                    <div>
+                        <label>số a</label>
+                        <input type="number" class="form-control" id="txt-soA" placeholder="nhap so a" />
+                        <label>số b</label>
+                        <input type="number" class="form-control" id="txt-soB" placeholder="nhap so b" />
+                    </div>
+                    <div>
+                        <label>kết quả</label>
+                        <input type="number" class="form-control" id="txt-ketqua" placeholder="ket qua" readonly />
+                    </div>
+                    <div class="row"> 
+                    <button class="btn btn-sm btn-success mt-4" id="tinh">tinh</button>
+                    <button class="btn btn-sm btn-success mt-4" id="Re">Resest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

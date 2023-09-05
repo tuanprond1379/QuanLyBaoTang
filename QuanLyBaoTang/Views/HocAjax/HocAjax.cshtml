@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "HocAjax";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+@section Js{
+    <script>
+        var myController = {
+            init: function () {
+                // myController.RegesterEvent();
+                myController.loadData();
+            },
+            RegesterEvent: function () {
+
+            },
+            loadData: function () {
+                // câu lệnh ajax
+                $.ajax({
+                    // type có 2 kiểu get- lấy giá trị gán vào ô input hoặc lấy list load ra bảng( lấy dữ liệu ra)
+                    //                post- khi muốn đẩy giữ liệu lên server để server lưu dữ liệu vào trong csdl(đẩy dữ liệu vào thêm mới sửa xóa)
+                    type: 'Get',
+                    // dữ liệu truyền lên theo dạng gì
+                    datatype: 'json',
+                    // url muốn chạy vào, và chạy vào hàm nào
+                    url: '/HocAjax/loadData',
+                    // hàm nhận lại dữ liệu từ server
+                    success: function (response) {
+                        if (response.status == true) {
+                            var lstHocSinh = response.lstHocSinh;
+                            // vòng lặp Jquery
+                            $.each(lstHocSinh, function (index, value) {
+                                $("#txtKetQua").append(
+                                    '<tr>' +
+                                    '<td>' + value.Ma_Hoc_Sinh + '</td>' +
+                                    '<td>' + value.Ho_Ten + '</td>' +
+                                    '<td>' + value.Tuoi + '</td>' +
+                                    '<td>' + value.Lop + '</td>' +
+                                    '</tr>')
+                            });
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            },
+        }
+        myController.init();
+    </script>
+}
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Quản lý học sinh</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-columned" id="tbl_HeThong">
+                            <thead>
+                                <tr>
+                                    <th>Mã học sinh</th>
+                                    <th>Họ tên</th>
+                                    <th>Tuổi</th>
+                                    <th>Lớp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="txtKetQua">
+                                <tr>
+                                    <td>0</td>
+                                    <td>abc</td>
+                                    <td>23</td>
+                                    <td>5</td>
+                               
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="col-lg-12 m-b-10">
+                        <button class="btn btn-primary btn-sm" id="btn_TaoMoi">Tạo mới</button>
+                        <button class="btn btn-info btn-sm" id="btnCapNhap">Cập nhập</button>
+                        <button class="btn btn-danger btn-sm" id="btnXoa">Xóa</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Mã học sinh</label>
+                        <input type="number" id="txtMaHocSinh" class="form-control" />
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Họ tên</label>
+                        <input type="text" id="txtHoTen" class="form-control" />
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label>Tuổi</label>
+                        <input type="text" id="txtTuoi" class="form-control" />
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label>Lớp</label>
+                        <input type="text" id="txtLop" class="form-control" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyHienVat";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+@section js{
+    
+    <script src="~/Controllers/js/quanlyhienvat.js"></script>
+    }
+<div class="col-sm-12">
+    <div class="card">
+
+        <div class="card-header text-center">
+            <h5>Quan Ly Hien Vat</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#tab1" role="tab" aria-controls="pills-home" aria-selected="true">1. Thong tin co ban</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#tab2" role="tab" aria-controls="pills-profile" aria-selected="false">2. ssadadsa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#tab3" role="tab" aria-controls="pills-contact" aria-selected="false">3. asfaf</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <input type="text" class="form-control" id="txtA" placeholder="gtA" />
+                                    <input type="text" class="form-control" id="txtB" placeholder="gtB" />
+                                    <button class="btn btn-info" id="bntLayGiaTri3">Tính tổng</button>
+                                    <input type="text" class="form-control" id="txtC" />
+                                </div>
+                                <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <p class="mb-0">
+                                        kekakefa
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <p class="mb-0">
+                                        Est quis nulla laborum officia ad nisi ex nostrud culpa Lorem excepteur aliquip dolor aliqua irure ex. Nulla ut duis ipsum nisi elit fugiat commodo sunt reprehenderit laborum veniam eu
+                                        veniam. Eiusmod
+                                        minim exercitation fugiat irure ex labore incididunt do fugiat commodo aliquip sit id deserunt reprehenderit aliquip nostrud. Amet ex cupidatat excepteur aute veniam incididunt mollit cupidatat esse
+                                        irure officia elit do ipsum ullamco Lorem.consequat non.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

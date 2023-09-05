@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "MonHoc";
+    Layout = "~/Views/Shared/SharedLayout/ViewAdmin.cshtml";
+}
+@section Js{
+   <script>
+       var MonHocController = {
+           init: function () {
+               MonHocController.Event();
+           },
+           Event: function () {
+           
+
+               $("#btnLoad").off('click').on('click', function () {
+                   MonHocController.LoadData();
+               });
+               $("#btnXoa").off('click').on('click', function () {
+                   $("#txtKetQua tr").last().remove();
+               });
+           },
+           LoadData: function () {
+               $.ajax({
+                   type: 'get',
+                   datatype: 'json',
+                   url: '/MonHoc/LoadData',
+                   success: function (response) {
+                       if (response.status == true) {
+                           var lstMonHoc = response.lstMonHoc;
+                           $.each(lstMonHoc, function (index, value) {
+                               $("#txtKetQua").append(
+                                   '<tr>' +
+                                   '<td>' + value.So_Thu_Tu + '</td>' +
+                                   '<td>' + value.Ten_Mon_Hoc + '</td>' +
+                                   '<td>' + value.Tin_Chi + '</td>' +                                
+                                   '</tr>')
+                           });
+                       } else {
+                           alert(response.message);
+                       }
+                   }
+               });
+           },
+       }
+       MonHocController.init();
+    </script>
+}
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Quản lý học sinh</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-columned" id="tbl_HeThong">
+                            <thead>
+                                <tr>
+                                    <th>Số thứ tự</th>
+                                    <th>Tên Môn Học</th>
+                                    <th>Tín Chỉ</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody id="txtKetQua">
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="col-lg-12 m-b-10">
+                        <button class="btn btn-primary btn-sm" id="btnLoad">Load Dữ liệu</button>
+                        <button class="btn btn-info btn-sm" id="btnXoa">Xóa Dữ Liệu</button>
+                      
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
